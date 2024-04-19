@@ -14,6 +14,8 @@ curl -OL https://github.com/premake/premake-core/releases/download/v5.0.0-beta2/
 
 tar -xvf premake-5.0.0-beta2-linux.tar.gz
 
+sed -i -- 's/altStackMem[SIGSTKSZ]/32768/g' *
+
 ./premake5 gmake
 
 cd Build/gmake
