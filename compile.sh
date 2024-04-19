@@ -5,7 +5,8 @@ echo "Today is " `date`
 
 cd ~
 
-git clone https://git.eq2emu.com/devn00b/EQ2EMu.git
+
+git clone --depth 1 https://git.eq2emu.com/devn00b/EQ2EMu.git
 
 cd ~/EQ2EMu/EQ2/source/depends/recastnavigation/RecastDemo
 
