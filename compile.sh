@@ -40,7 +40,7 @@ cd ~/EQ2EMu
 
 mkdir Linux
 
-cd ~/EQ2EMU/Linux
+cd ~/EQ2EMu/Linux
 
 cp ../EQ2/source/WorldServer/eq2world ./ && cp ../EQ2/source/LoginServer/login ./
 
