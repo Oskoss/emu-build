@@ -10,7 +10,7 @@ git clone --depth 1 https://git.eq2emu.com/devn00b/EQ2EMu.git
 
 cd ~/EQ2EMu/EQ2/source/depends/recastnavigation/RecastDemo
 
-curl -O https://github.com/premake/premake-core/releases/download/v5.0.0-beta2/premake-5.0.0-beta2-linux.tar.gz
+curl -OL https://github.com/premake/premake-core/releases/download/v5.0.0-beta2/premake-5.0.0-beta2-linux.tar.gz
 
 tar -xvf premake-5.0.0-beta2-linux.tar.gz
 
