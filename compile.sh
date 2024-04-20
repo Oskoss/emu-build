@@ -16,7 +16,6 @@ tar -xvf premake-5.0.0-beta2-linux.tar.gz
 
 #Fix some issue with altStackMem size
 sed -i -e 's/SIGSTKSZ/32768/g' ~/EQ2EMu/EQ2/source/depends/recastnavigation/Tests/catch.hpp
-cat ~/EQ2EMu/EQ2/source/depends/recastnavigation/Tests/catch.hpp
 
 ./premake5 gmake
 
