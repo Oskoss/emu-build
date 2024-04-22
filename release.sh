@@ -10,7 +10,8 @@ fi
 
 REPO_REMOTE=$(git config --get remote.origin.url)
 REPO_NAME=$(basename -s .git $REPO_REMOTE)
-VERSION=$(git log --pretty=format:'%h' -n 1)
+#SHORT_SHA provided via Cloud Build
+VERSION=$SHORT_SHA
 MESSAGE=$(printf "Release of version %s" $VERSION)
 REPO_OWNER="oskoss"
 BRANCH="main"
