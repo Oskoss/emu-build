@@ -66,5 +66,5 @@ DRAFT="false"
 PRE="false"
 
 API_JSON=$(printf '{"tag_name": "v%s","target_commitish": "%s","name": "%s","body": "%s","draft": %s,"prerelease": %s}' "$VERSION" "$BRANCH" "$VERSION" "$MESSAGE" "$DRAFT" "$PRE" )
-API_RESPONSE_STATUS=$(curl -h "Authorization: $GITHUB_ACCESS_TOKEN" --data "$API_JSON" -s -i https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases)
+API_RESPONSE_STATUS=$(curl -H "Authorization: $GITHUB_ACCESS_TOKEN" --data "$API_JSON" -s -i https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases)
 echo "$API_RESPONSE_STATUS"
