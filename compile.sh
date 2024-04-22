@@ -53,7 +53,7 @@ echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
 if [[ -z "${GITHUB_ACCESS_TOKEN}" ]]; then
   echo "GITHUB_ACCESS_TOKEN not set....update and try again"
-  # exit 1
+  exit 1
 fi
 
 REPO_REMOTE=$(git config --get remote.origin.url)
