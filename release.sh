@@ -28,3 +28,8 @@ echo "$WORLD_UPLOAD_RESPONSE_STATUS"
 
 LOGIN_UPLOAD_RESPONSE_STATUS=$(curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_ACCESS_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" -H "Content-Type: application/octet-stream" "https://uploads.github.com/repos/$REPO_OWNER/$REPO_NAME/releases/$VERSION/assets?name=login" --data-binary "@login")
 echo "$LOGIN_UPLOAD_RESPONSE_STATUS"
+
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+echo "!!!!!!!!!!!!Yay, it released $VERSION!!!!!!!!!!!!!"
+echo "!!!https://github.com/oskoss/emu-build/releases!!!"
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
