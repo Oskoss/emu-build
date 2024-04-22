@@ -1,7 +1,7 @@
 #!/bin/bash
 set -ex
 
-echo "Today is " `date`
+echo "Today is " `date -u --date=@1404372514`
 
 # cd ~
 
