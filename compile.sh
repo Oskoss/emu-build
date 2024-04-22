@@ -51,8 +51,8 @@ echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 echo "!!!!!!!!!!Yay, it compiled and built!!!!!!!!!!"
 echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
-if [[ -z "${_GITHUB_ACCESS_TOKEN}" ]]; then
-  echo "_GITHUB_ACCESS_TOKEN not set....update and try again"
+if [[ -z "${GITHUB_ACCESS_TOKEN}" ]]; then
+  echo "GITHUB_ACCESS_TOKEN not set....update and try again"
   # exit 1
 fi
 
@@ -66,5 +66,5 @@ DRAFT="false"
 PRE="false"
 
 API_JSON=$(printf '{"tag_name": "v%s","target_commitish": "%s","name": "%s","body": "%s","draft": %s,"prerelease": %s}' "$VERSION" "$BRANCH" "$VERSION" "$MESSAGE" "$DRAFT" "$PRE" )
-API_RESPONSE_STATUS=$(curl --data "$API_JSON" -s -i https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases?access_token=$_GITHUB_ACCESS_TOKEN)
+API_RESPONSE_STATUS=$(curl --data "$API_JSON" -s -i https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases?access_token=$GITHUB_ACCESS_TOKEN)
 echo "$API_RESPONSE_STATUS"
