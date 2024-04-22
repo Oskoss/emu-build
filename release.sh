@@ -21,7 +21,7 @@ RELEASE_JSON=$(printf '{"tag_name": "%s","target_commitish": "%s","name": "%s","
 RELEASE_RESPONSE_STATUS=$(curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_ACCESS_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases -d "$RELEASE_JSON")
 echo "$RELEASE_RESPONSE_STATUS"
 
-UPLOAD_URL=$(echo $RELEASE_RESPONSE_STATUS | grep "upload_url")
+UPLOAD_URL=$(echo "$RELEASE_RESPONSE_STATUS" | grep "upload_url")
 echo "$UPLOAD_URL"
 UPLOAD_URL="${UPLOAD_URL:15:-15}"
 
