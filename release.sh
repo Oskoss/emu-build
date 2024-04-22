@@ -1,4 +1,4 @@
-o#!/bin/bash
+#!/bin/bash
 set -ex
 
 echo "Today is " `date -u --date=@1404372514`
@@ -22,7 +22,6 @@ RELEASE_RESPONSE_STATUS=$(curl -L -X POST -H "Accept: application/vnd.github+jso
 echo "$RELEASE_RESPONSE_STATUS"
 
 UPLOAD_URL=$(echo "$RELEASE_RESPONSE_STATUS" | grep "upload_url")
-echo "$UPLOAD_URL"
 UPLOAD_URL="${UPLOAD_URL:17:-15}"
 
 cd /workspace
@@ -34,7 +33,7 @@ echo "$WORLD_UPLOAD_RESPONSE_STATUS"
 LOGIN_UPLOAD_RESPONSE_STATUS=$(curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_ACCESS_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" -H "Content-Type: application/octet-stream" "$UPLOAD_URL?name=login" --data-binary "@/workspace/login")
 echo "$LOGIN_UPLOAD_RESPONSE_STATUS"
 
-echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-echo "!!!!!!!!!!!!Yay, it released $VERSION!!!!!!!!!!!!!"
-echo "!!!https://github.com/oskoss/emu-build/releases!!!"
-echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+echo "!!!            Yay, it released $VERSION               !!!"
+echo "!!!    https://github.com/oskoss/emu-build/releases    !!!"
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
