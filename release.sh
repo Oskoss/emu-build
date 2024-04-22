@@ -23,7 +23,7 @@ echo "$RELEASE_RESPONSE_STATUS"
 
 UPLOAD_URL=$(echo "$RELEASE_RESPONSE_STATUS" | grep "upload_url")
 echo "$UPLOAD_URL"
-UPLOAD_URL="${UPLOAD_URL:15:-15}"
+UPLOAD_URL="${UPLOAD_URL:17:-15}"
 
 cd /workspace
 ls -ltra 
