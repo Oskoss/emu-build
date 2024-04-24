@@ -13,13 +13,17 @@ spec:
         spec:
           containers:
           - image: buddyspencer/gickup
+            command:
+            - /gickup/gickup
+            args:
+            - /config/conf.yaml
             resources:
               limits:
                 cpu: 2000m
                 memory: 2Gi
             volumeMounts:
             - name: conf-yaml
-              mountPath: /gickup
+              mountPath: /config
           maxRetries: 3
           timeoutSeconds: '1800'
           volumes:
