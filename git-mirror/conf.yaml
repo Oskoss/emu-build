@@ -1,6 +1,7 @@
 source:
   gogs:
     - url: https://git.eq2emu.com/
+      token: <TOKEN>
       user: devn00b
       ssh: false
       include:
