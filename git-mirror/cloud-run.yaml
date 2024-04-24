@@ -19,8 +19,8 @@ spec:
             - /config/conf.yaml
             resources:
               limits:
-                cpu: 2000m
-                memory: 2Gi
+                cpu: 8000m
+                memory: 32Gi
             volumeMounts:
             - name: conf-yaml
               mountPath: /config
