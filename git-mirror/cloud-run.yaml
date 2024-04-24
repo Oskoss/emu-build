@@ -1,0 +1,25 @@
+apiVersion: run.googleapis.com/v1
+kind: Job
+metadata:
+  name: mirror-devn00b
+  labels:
+    cloud.googleapis.com/location: us-central1
+spec:
+  template:
+    metadata:
+    spec:
+      taskCount: 1
+      template:
+        spec:
+          containers:
+          - image: buddyspencer/gickup
+            volumeMounts:
+            - name: conf-yaml
+              mountPath: /gickup
+          volumes:
+          - name: conf-yaml
+            secret:
+              secretName: gickup-conf
+              items:
+              - key: latest
+                path: /gickup/conf.yaml

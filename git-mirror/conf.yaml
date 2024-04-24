@@ -1,0 +1,18 @@
+source:
+  gogs:
+    - url: https://git.eq2emu.com/
+      user: devn00b
+      ssh: false
+      include:
+        - EQ2EMu
+      wiki: true
+      issues: true
+destination:
+  github:
+    - token: <TOKEN>
+      organization: oskoss
+      force: true
+      visibility:
+        repositories: public
+log:
+  timeformat: 2006-01-02 15:04:05 
