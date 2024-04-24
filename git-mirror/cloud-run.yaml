@@ -25,7 +25,7 @@ spec:
             - name: conf-yaml
               mountPath: /config
           maxRetries: 3
-          timeoutSeconds: '1800'
+          timeoutSeconds: '86400'
           volumes:
           - name: conf-yaml
             secret:
