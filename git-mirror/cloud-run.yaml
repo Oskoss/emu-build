@@ -7,17 +7,25 @@ metadata:
 spec:
   template:
     spec:
+      parallelism: 1
+      taskCount: 1
       template:
         spec:
           containers:
           - image: buddyspencer/gickup
+            resources:
+              limits:
+                cpu: 2000m
+                memory: 2Gi
             volumeMounts:
             - name: conf-yaml
               mountPath: /gickup
+          maxRetries: 3
+          timeoutSeconds: '1800'
           volumes:
           - name: conf-yaml
             secret:
               secretName: gickup-conf
               items:
               - key: latest
-                path: /gickup/conf.yaml
+                path: conf.yaml
