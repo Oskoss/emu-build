@@ -8,10 +8,11 @@ if [[ -z "${GITHUB_ACCESS_TOKEN}" ]]; then
   exit 1
 fi
 
+cd /workspace/EQ2EMu
+
 REPO_REMOTE=$(git config --get remote.origin.url)
 REPO_NAME=$(basename -s .git $REPO_REMOTE)
-#SHORT_SHA provided via Cloud Build
-VERSION=$SHORT_SHA
+VERSION=$(cat /workspace/version)
 MESSAGE=$(printf "Release of version %s" $VERSION)
 REPO_OWNER="oskoss"
 BRANCH="main"
@@ -25,13 +26,13 @@ echo "$RELEASE_RESPONSE_STATUS"
 UPLOAD_URL=$(echo "$RELEASE_RESPONSE_STATUS" | grep "upload_url")
 UPLOAD_URL="${UPLOAD_URL:17:-15}"
 
-cd /workspace
+cd /workspace/release
 ls -ltra 
 
-WORLD_UPLOAD_RESPONSE_STATUS=$(curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_ACCESS_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" -H "Content-Type: application/octet-stream" "$UPLOAD_URL?name=eq2world" --data-binary "@/workspace/eq2world")
+WORLD_UPLOAD_RESPONSE_STATUS=$(curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_ACCESS_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" -H "Content-Type: application/octet-stream" "$UPLOAD_URL?name=eq2world" --data-binary "@/workspace/release/eq2world")
 echo "$WORLD_UPLOAD_RESPONSE_STATUS"
 
-LOGIN_UPLOAD_RESPONSE_STATUS=$(curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_ACCESS_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" -H "Content-Type: application/octet-stream" "$UPLOAD_URL?name=login" --data-binary "@/workspace/login")
+LOGIN_UPLOAD_RESPONSE_STATUS=$(curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_ACCESS_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" -H "Content-Type: application/octet-stream" "$UPLOAD_URL?name=login" --data-binary "@/workspace/release/login")
 echo "$LOGIN_UPLOAD_RESPONSE_STATUS"
 
 echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
