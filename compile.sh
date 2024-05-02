@@ -12,7 +12,7 @@ tar -xvf premake-5.0.0-beta2-linux.tar.gz
 #Fix some issue with altStackMem size
 sed -i -e 's/SIGSTKSZ/32768/g' /workspace/EQ2EMu/EQ2/source/depends/recastnavigation/Tests/catch.hpp
 
-sed -i -e 's/\#include \<map\>/a\n\#include \<stdint.h\>/g' /workspace/EQ2EMu/EQ2/source/common/MiscFunctions.h
+sed -i -e 's/\#include <map>/\#include <map>\n\#include <stdint.h>/' /workspace/EQ2EMu/EQ2/source/common/MiscFunctions.h
 
 cat /workspace/EQ2EMu/EQ2/source/common/MiscFunctions.h
 
