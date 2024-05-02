@@ -11,9 +11,9 @@ cd /workspace/EQ2EMu
 
 echo $(git rev-parse --short HEAD) > /workspace/cur_version
 
-curl -OL https://storage.googleapis.com/eq2emu-devn00b-hash/version
+cd /workspace
 
-cd /workspace/EQ2EMu 
+curl -OL https://storage.googleapis.com/eq2emu-devn00b-hash/version
 
 PREV_GIT_HASH=$(cat /workspace/version)
 CUR_GIT_HASH=$(cat  /workspace/cur_version)
