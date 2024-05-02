@@ -7,7 +7,7 @@ cd /workspace
 
 git clone --depth 1 https://git.eq2emu.com/devn00b/EQ2EMu.git
 
-echo git rev-parse --short HEAD > /workspace/cur_version
+echo $(git rev-parse --short HEAD) > /workspace/cur_version
 
 curl -OL https://storage.googleapis.com/eq2emu-devn00b-hash/version
 
