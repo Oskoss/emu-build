@@ -14,6 +14,8 @@ sed -i -e 's/SIGSTKSZ/32768/g' /workspace/EQ2EMu/EQ2/source/depends/recastnaviga
 
 sed -i -e 's/\#include <map>/\#include <map>\n\#include <stdint.h>/' /workspace/EQ2EMu/EQ2/source/common/MiscFunctions.h
 
+sed -i -e 's/\#include <boost\/filesystem.hpp>/\#include <boost\/filesystem.hpp>\n\#include <fstream>/' /workspace/EQ2EMu/EQ2/source/WorldServer/Zone/region_map_v1.cpp
+
 cat /workspace/EQ2EMu/EQ2/source/common/MiscFunctions.h
 
 ./premake5 gmake
