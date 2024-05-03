@@ -9,14 +9,12 @@ curl -OL https://github.com/premake/premake-core/releases/download/v5.0.0-beta2/
 
 tar -xvf premake-5.0.0-beta2-linux.tar.gz
 
-#Fix some issue with altStackMem size
+#Fix some issue with code for compilation
 sed -i -e 's/SIGSTKSZ/32768/g' /workspace/EQ2EMu/EQ2/source/depends/recastnavigation/Tests/catch.hpp
 
 sed -i -e 's/\#include <map>/\#include <map>\n\#include <stdint.h>/' /workspace/EQ2EMu/EQ2/source/common/MiscFunctions.h
 
 sed -i -e 's/\#include <boost\/filesystem.hpp>/\#include <boost\/filesystem.hpp>\n\#include <fstream>/' /workspace/EQ2EMu/EQ2/source/WorldServer/Zone/region_map_v1.cpp
-
-cat /workspace/EQ2EMu/EQ2/source/common/MiscFunctions.h
 
 ./premake5 gmake
 
