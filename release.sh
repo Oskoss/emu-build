@@ -8,11 +8,13 @@ if [[ -z "${GITHUB_ACCESS_TOKEN}" ]]; then
   exit 1
 fi
 
-
+cd /workspace/EQ2EMu
+COMMIT_MSG=$(git rev-list --format=%s%b --max-count=1 HEAD)
 REPO_OWNER="oskoss"
 REPO_NAME="emu-build"
 VERSION=$(cat /workspace/cur_version)
-MESSAGE=$(printf "Release of version %s" $VERSION)
+
+MESSAGE=$(printf "Release of EQ2EMu https://www.eq2emu.com\n" $VERSION $COMMIT_MSG)
 BRANCH="main"
 DRAFT="false"
 PRE="false"
