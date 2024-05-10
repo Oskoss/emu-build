@@ -8,13 +8,11 @@ if [[ -z "${GITHUB_ACCESS_TOKEN}" ]]; then
   exit 1
 fi
 
-cd /workspace/EQ2EMu
 
-REPO_REMOTE=$(git config --get remote.origin.url)
-REPO_NAME=$(basename -s .git $REPO_REMOTE)
+REPO_OWNER="oskoss"
+REPO_NAME="emu-build"
 VERSION=$(cat /workspace/cur_version)
 MESSAGE=$(printf "Release of version %s" $VERSION)
-REPO_OWNER="oskoss"
 BRANCH="main"
 DRAFT="false"
 PRE="false"
