@@ -3,6 +3,10 @@ set -eux
 
 echo "Today is " `date -u --date=@1404372514`
 
+pwd
+ls -ltra
+whoami
+
 cd /workspace
 
 git clone --depth 1 https://git.eq2emu.com/devn00b/EQ2EMu.git
