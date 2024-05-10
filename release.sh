@@ -12,7 +12,7 @@ cd /workspace/EQ2EMu
 
 REPO_REMOTE=$(git config --get remote.origin.url)
 REPO_NAME=$(basename -s .git $REPO_REMOTE)
-VERSION=$(cat /workspace/version)
+VERSION=$(cat /workspace/cur_version)
 MESSAGE=$(printf "Release of version %s" $VERSION)
 REPO_OWNER="oskoss"
 BRANCH="main"
