@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -exu
 
 echo "Today is " `date -u --date=@1404372514`
 
