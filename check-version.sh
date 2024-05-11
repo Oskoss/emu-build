@@ -23,5 +23,4 @@ if [[ $PREV_GIT_HASH == $CUR_GIT_HASH ]]; then
     gcloud builds cancel $BUILD_ID
 else
     echo "New commits found. Running compile, build, release!"
-    exit 0
 fi
