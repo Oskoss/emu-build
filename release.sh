@@ -10,6 +10,9 @@ fi
 
 cd /workspace/EQ2EMu
 COMMIT_MSG=$(git rev-list --format=%s%b --max-count=1 HEAD)
+
+echo $COMMIT_MSG
+
 REPO_OWNER="oskoss"
 REPO_NAME="emu-build"
 VERSION=$(cat /workspace/cur_version)
@@ -19,7 +22,11 @@ BRANCH="main"
 DRAFT="false"
 PRE="false"
 
+echo $MESSAGE
+
 RELEASE_JSON=$(printf '{"tag_name": "%s","target_commitish": "%s","name": "%s","body": "%s","draft": %s,"prerelease": %s}' "$VERSION" "$BRANCH" "$VERSION" "$MESSAGE" "$DRAFT" "$PRE" )
+
+echo $RELEASE_JSON
 RELEASE_RESPONSE_STATUS=$(curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_ACCESS_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases -d "$RELEASE_JSON")
 echo "$RELEASE_RESPONSE_STATUS"
 
