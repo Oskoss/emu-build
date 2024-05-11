@@ -20,7 +20,7 @@ CUR_GIT_HASH=$(cat  /workspace/cur_version)
 
 if [[ $PREV_GIT_HASH == $CUR_GIT_HASH ]]; then
     echo "No new commits found. See you soon!"
-    exit 1
+    gcloud builds cancel $BUILD_ID
 else
     echo "New commits found. Running compile, build, release!"
     exit 0
