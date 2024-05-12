@@ -9,7 +9,7 @@ if [[ -z "${GITHUB_ACCESS_TOKEN}" ]]; then
 fi
 
 cd /workspace/EQ2EMu
-COMMIT_MSG=$(git rev-list --format=%s%b --max-count=1 HEAD | awk '{printf "%s\\\\n", $0}')
+COMMIT_MSG=$(git rev-list --format=%s%b --max-count=1 HEAD | awk '{printf "%s\\\\\\\\n", $0}')
 
 echo $COMMIT_MSG
 
