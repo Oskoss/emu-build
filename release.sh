@@ -25,6 +25,8 @@ PRE="false"
 echo $MESSAGE
 printf '{"tag_name": "%s","target_commitish": "%s","name": "%s","body": "%s","draft": %s,"prerelease": %s}' "$VERSION" "$BRANCH" "$VERSION" "$MESSAGE" "$DRAFT" "$PRE" > release.json
 cat release.json
+tr '\n' '\\\\n' < release.json
+cat release.json
 
 RELEASE_RESPONSE_STATUS=$(curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_ACCESS_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases -d "@release.json")
 echo "$RELEASE_RESPONSE_STATUS"
