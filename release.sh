@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eux
+set -euxo pipefail
 
 echo "Today is " `date -u --date=@1404372514`
 
