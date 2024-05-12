@@ -17,7 +17,7 @@ REPO_OWNER="oskoss"
 REPO_NAME="emu-build"
 VERSION=$(cat /workspace/cur_version)
 
-MESSAGE=$(printf "Release of EQ2EMu https://www.eq2emu.com\\n%s" "$COMMIT_MSG")
+MESSAGE=$(printf "Release of EQ2EMu https://www.eq2emu.com\\\\n%s" "$COMMIT_MSG")
 BRANCH="main"
 DRAFT="false"
 PRE="false"
