@@ -1,0 +1,61 @@
+build:
+  options:
+    automapSubstitutions: true
+  steps:
+  - args:
+    - -c
+    - |
+      apt update
+      apt install -y curl git
+      git clone https://github.com/oskoss/emu-build
+      cd emu-build/release
+      ./check-version.sh
+      rm -rf /workspace/emu-build
+    entrypoint: bash
+    env:
+    - BUILD_ID=$BUILD_ID
+    id: version-check
+    name: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+  - args:
+    - -c
+    - |
+      apt update
+      apt install -y  libboost-all-dev freeglut3-dev libgl1-mesa-dev libglu1-mesa-dev curl libfmt-dev git make automake g++ mariadb-server libsdl2-dev libmariadb-dev libboost-all-dev libreadline-dev cmake
+      git clone https://github.com/oskoss/emu-build
+      cd emu-build/release
+      ./compile.sh
+      rm -rf /workspace/emu-build
+    entrypoint: bash
+    id: compile-build
+    name: ubuntu
+  - args:
+    - -c
+    - |
+      apt update
+      apt install -y curl git
+      git clone https://github.com/oskoss/emu-build
+      cd emu-build/release
+      ./release.sh
+      rm -rf /workspace/emu-build
+    entrypoint: bash
+    secretEnv:
+    - GITHUB_ACCESS_TOKEN
+    id: release
+    name: ubuntu
+  - args:
+    - -c
+    - |
+      apt update
+      apt install -y curl git
+      git clone https://github.com/oskoss/emu-build
+      cd emu-build/release
+      ./update-version.sh
+      rm -rf /workspace/emu-build
+    entrypoint: bash
+    id: version-update
+    name: gcr.io/google.com/cloudsdktool/google-cloud-cli:latest
+  availableSecrets:
+    secretManager:
+    - versionName: projects/PROJECT_ID/secrets/GITHUB_ACCESS_TOKEN/versions/latest
+      env: GITHUB_ACCESS_TOKEN
+name: eq2emu-release
