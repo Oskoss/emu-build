@@ -40,10 +40,15 @@ cd /workspace/release
 
 cp /workspace/EQ2EMu/EQ2/source/WorldServer/eq2world ./ && cp /workspace/EQ2EMu/EQ2/source/LoginServer/login ./
 
-cp -rT /workspace/EQ2EMu/server .
+cd /workspace/EQ2EMu
+
+tar -czvf server.tar.gz server
+
+cd /workspace/release
+
+cp /workspace/EQ2EMu/server.tar.gz ./
 
 ls -ltra
-
 echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 echo "!!!    Successfully compiled and built     !!!"
 echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
