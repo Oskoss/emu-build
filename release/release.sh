@@ -35,14 +35,23 @@ UPLOAD_URL="${UPLOAD_URL:17:-15}"
 cd /workspace/release
 ls -ltra 
 
+curl -vLO https://www.zeklabs.com/dl/eq2emudb.rar
+curl -vLO https://www.zeklabs.com/dl/eq2emulssql.rar
+
 WORLD_UPLOAD_RESPONSE_STATUS=$(curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_ACCESS_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" -H "Content-Type: application/octet-stream" "$UPLOAD_URL?name=eq2world" --data-binary "@/workspace/release/eq2world")
 echo "$WORLD_UPLOAD_RESPONSE_STATUS"
 
 LOGIN_UPLOAD_RESPONSE_STATUS=$(curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_ACCESS_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" -H "Content-Type: application/octet-stream" "$UPLOAD_URL?name=login" --data-binary "@/workspace/release/login")
 echo "$LOGIN_UPLOAD_RESPONSE_STATUS"
 
-LOGIN_UPLOAD_RESPONSE_STATUS=$(curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_ACCESS_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" -H "Content-Type: application/octet-stream" "$UPLOAD_URL?name=server.tar.gz" --data-binary "@/workspace/release/server.tar.gz")
-echo "$LOGIN_UPLOAD_RESPONSE_STATUS"
+SERVER_UPLOAD_RESPONSE_STATUS=$(curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_ACCESS_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" -H "Content-Type: application/octet-stream" "$UPLOAD_URL?name=server.tar.gz" --data-binary "@/workspace/release/server.tar.gz")
+echo "$SERVER_UPLOAD_RESPONSE_STATUS"
+
+WORLD_DB_UPLOAD_RESPONSE_STATUS=$(curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_ACCESS_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" -H "Content-Type: application/octet-stream" "$UPLOAD_URL?name=eq2emuworldsql.rar" --data-binary "@/workspace/release/eq2emudb.rar")
+echo "$WORLD_DB_UPLOAD_RESPONSE_STATUS"
+
+LOGIN_DB_UPLOAD_RESPONSE_STATUS=$(curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_ACCESS_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" -H "Content-Type: application/octet-stream" "$UPLOAD_URL?name=eq2emuloginsql.rar" --data-binary "@/workspace/release/eq2emulssql.rar")
+echo "$LOGIN_DB_UPLOAD_RESPONSE_STATUS"
 
 echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 echo "!!!            Yay, it released $VERSION               !!!"
